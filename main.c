@@ -1,31 +1,24 @@
 #include <stdio.h>
-#include <string.h>
 
-typedef struct {
-  unsigned int id;
-  unsigned int age;
-  char name[30];
-} Person;
+const char *TEST_FILE = "/Users/duanyufei/temp/j.json";
 
-void printPersion(const Person *p) {
-  printf("id:%d\n", (*p).id);
-  printf("age:%d\n", (*p).age);
-  printf("name:%s\n", (*p).name);
-
+void log(const char *msg) {
+  printf("%s", msg);
 }
-int main(int argc, char *argv[]) {
 
-  char c;
-  while ((c = getchar()) != EOF) {
-    printf("putchar\n");
-    putchar(c);
+int main(int argc, char *argv[]) {
+  FILE *f = fopen(TEST_FILE, "r");
+  if (f==NULL) {
+    log("open file fail");
+  } else {
+    log("open success");
   }
 
-  // printf("argc: %d", argc);
-  // printf("\n");
+  char c;
+  while ((c = fgetc(f))!=EOF) {
+    printf("%c", c);
+  }
 
-  // Person peter = { 123, 35, "Peter"};
-
-  // printPersion(&peter);
+  fclose(f);
   return 0;
 }
