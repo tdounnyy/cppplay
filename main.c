@@ -1,12 +1,33 @@
 #include <stdio.h>
+#include <string.h>
 
+typedef struct {
+    unsigned int id;
+    unsigned int age;
+    char name[30];
+} Person;
+
+
+void printPersion(const Person* p) {
+    printf("id:%d\n", (*p).id);
+    printf("age:%d\n", (*p).age);
+    printf("name:%s\n", (*p).name);
+
+}
 int main(int argc, char *argv[]) {
-    printf("argc: %d", argc);
-    printf("\n");
-    for (int i = 0; i< argc; i++) {
-        printf("arg:%s\n", argv[i]);
+
+    char c;
+    while ((c=getchar())!=EOF)
+    {
+        printf("putchar\n");
+        putchar(c);
     }
-    // char* name = "felix";
-    // printf("name = %s\n", name);
+    
+    // printf("argc: %d", argc);
+    // printf("\n");
+
+    // Person peter = { 123, 35, "Peter"};
+
+    // printPersion(&peter);
     return 0;
 }
