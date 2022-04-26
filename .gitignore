@@ -4,3 +4,4 @@ build/*
 .vscode/
 *.dSYM/
 main
+cmake-build-debug/
