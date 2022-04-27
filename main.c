@@ -1,24 +1,31 @@
 #include <stdio.h>
 
-const char *TEST_FILE = "/Users/duanyufei/temp/j.json";
+const char *TEST_FILE = "/Users/duanyufei/temp/test.py";
+const char *TARGET_FILE = "/Users/duanyufei/temp/test2.py";
 
 void log(const char *msg) {
   printf("%s", msg);
 }
 
-int main(int argc, char *argv[]) {
-  FILE *f = fopen(TEST_FILE, "r");
-  if (f==NULL) {
+void copy(char *inputfile, char *outputfile) {
+  FILE *infile = fopen(inputfile, "r");
+  FILE *outfile = fopen(outputfile, "w");
+  if (infile == NULL) {
     log("open file fail");
   } else {
     log("open success");
   }
 
   char c;
-  while ((c = fgetc(f))!=EOF) {
+  while ((c = fgetc(infile)) != EOF) {
     printf("%c", c);
+    fputc(c, outfile);
   }
 
-  fclose(f);
-  return 0;
+  fclose(infile);
+  fclose(outfile);
+}
+
+int main(int argc, char *argv[]) {
+  copy(TEST_FILE, TARGET_FILE);
 }
